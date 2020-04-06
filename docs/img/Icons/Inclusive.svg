@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="131px" height="131px" viewBox="0 0 131 131" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Group 17</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="B&amp;F-Website-Home" transform="translate(-150.000000, -2271.000000)">
+            <g id="Group-17" transform="translate(150.000000, 2271.000000)">
+                <circle id="Oval" fill="#FCE5E9" cx="65.5" cy="65.5" r="65.5"></circle>
+                <g id="Group-27" transform="translate(29.000000, 29.000000)" stroke="#000000" stroke-width="3">
+                    <path d="M52.2366,36.6579 C52.2366,45.5259 45.0476,52.7159 36.1786,52.7159 C27.3096,52.7159 20.1206,45.5259 20.1206,36.6579 C20.1206,27.7889 27.3096,20.5999 36.1786,20.5999 C45.0476,20.5999 52.2366,27.7889 52.2366,36.6579 Z" id="Stroke-1"></path>
+                    <line x1="62.1487" y1="62.6277" x2="55.0747" y2="55.5537" id="Stroke-3" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-5" stroke-linecap="round" stroke-linejoin="round" points="54.4143 60.822 54.4143 54.894 60.3433 54.894"></polyline>
+                    <line x1="8.7971" y1="64.0393" x2="17.2821" y2="55.5543" id="Stroke-7" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-9" stroke-linecap="round" stroke-linejoin="round" points="17.9426 60.822 17.9426 54.894 12.0136 54.894"></polyline>
+                    <line x1="63.1877" y1="9.6872" x2="55.0747" y2="17.7612" id="Stroke-11" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-13" stroke-linecap="round" stroke-linejoin="round" points="54.4143 12.4934 54.4143 18.4214 60.3433 18.4214"></polyline>
+                    <path d="M8.7971,2.4602 C10.6801,4.3422 10.6801,7.3942 8.7971,9.2762 C6.9151,11.1582 3.8631,11.1582 1.9811,9.2762 C0.0991,7.3942 0.0991,4.3422 1.9811,2.4602 C3.8631,0.5782 6.9151,0.5782 8.7971,2.4602 Z" id="Stroke-15" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <line x1="8.7971" y1="9.2766" x2="17.2821" y2="17.7616" id="Stroke-17" stroke-linecap="round" stroke-linejoin="round"></line>
+                    <polyline id="Stroke-19" stroke-linecap="round" stroke-linejoin="round" points="17.9426 12.4934 17.9426 18.4214 12.0136 18.4214"></polyline>
+                    <polygon id="Stroke-21" stroke-linecap="round" stroke-linejoin="round" points="62.1487 62.6277 64.9267 72.9977 72.5187 65.4067"></polygon>
+                    <polygon id="Stroke-23" stroke-linecap="round" stroke-linejoin="round" points="6.2571 73.2038 0.5001 67.4468 6.2571 61.6898 12.0141 67.4468"></polygon>
+                    <polygon id="Stroke-25" stroke-linecap="round" stroke-linejoin="round" points="65.6496 0.5002 61.7666 4.3832 63.1876 9.6872 68.4926 11.1082 72.3756 7.2252 70.9546 1.9212"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

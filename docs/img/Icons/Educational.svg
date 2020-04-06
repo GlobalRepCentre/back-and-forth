@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="131px" height="131px" viewBox="0 0 131 131" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Group 14</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="B&amp;F-Website-Home" transform="translate(-930.000000, -2271.000000)">
+            <g id="Group-14" transform="translate(930.000000, 2271.000000)">
+                <circle id="Oval-Copy-2" fill="#FCE5E9" cx="65.5" cy="65.5" r="65.5"></circle>
+                <g id="Group-11" transform="translate(41.000000, 47.000000)" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
+                    <polygon id="Stroke-1" points="23.5787394 24.2112594 0.898739976 12.5544597 23.5787394 0.899459976 46.2569388 12.5544597"></polygon>
+                    <line x1="12.5800197" y1="34.0356591" x2="12.5800197" y2="19.5816595" id="Stroke-3"></line>
+                    <line x1="34.5754791" y1="19.5811195" x2="34.5754791" y2="34.0351191" id="Stroke-5"></line>
+                    <path d="M12.5800197,34.0356591 C15.3214196,35.3568591 19.2274195,36.190259 23.5780194,36.190259 C27.9286193,36.190259 31.8346192,35.3568591 34.5760191,34.0356591" id="Stroke-7"></path>
+                    <line x1="46.2562188" y1="12.5551797" x2="46.2562188" y2="22.0969794" id="Stroke-9"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

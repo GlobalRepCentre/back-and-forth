@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Back & Forth</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   <meta name="HandheldFriendly" content="true">
+   <link rel="stylesheet" href="https://use.typekit.net/fwg6gie.css">
+   
+   <link rel="stylesheet" href="css/nice-select.css">
+   <link rel="stylesheet" href="css/style.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src="js/bootstrap.bundle.js"></script>
+   <script src="js/jquery.nice-select.min.js"></script>
+   <script src="js/main.js"></script>
+   <script src="js/formspree.js"></script>
+</head>
+
+<body>
+
+   <div id="page-wrapper">
+
+      <div class="landingpage">
+
+         <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-lg">
+               <a class="navbar-brand" href="index.html"><img src="img/Logo/Full.svg"></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+
+               <div class="collapse navbar-collapse justify-content-end text-center" id="navbarSupportedContent">
+                  <ul class="navbar-nav">
+                     <li class="nav-item">
+                        <a class="navactive" href="#howitworks">How it works</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="navactive" href="#why">Why?</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="navactive" href="#resources">Resources</a>
+                     </li>
+                     <li class="nav-item"><a class="navactive" href="#aboutus">About us</a></li>
+                     <li class="nav-item" id="libutton">
+                        <a href="#signup" class="navactive">
+                           <button type="button" class="btn btn-primary btn-lg" id="signupbutton">Sign
+                              up</button></a>
+                     </li>
+                  </ul>
+
+               </div>
+            </div>
+         </nav>
+
+         <div id="home">
+            <div class="container-lg">
+               <div class="landing-text">
+                  <h1>Learn better<br> by working together</h1>
+                  <p>Back & Forth is an open source platform that lets you create interactive,
+                     <br /> team-based experiences wherever you want them.</p>
+                  <br>
+               </div>
+               <a href="#howitworks"><button type="button" class="btn btn-primary btn-lg" id="getstartedbutton">Get
+                     started &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="arrowicon"></span></button>
+               </a>
+            </div>
+         </div>
+
+         <div class="container-lg imgcontainer">
+            <img id="pic1" src="img/Pictures/back&forth-hero.jpg">
+         </div>
+      </div>
+
+      <div id="howitworks">
+         <div class="container-lg">
+            <div class="row">
+               <div class="col-12 col-md-6 text-left">
+                  <h2>How it works</h2>
+                  <br>
+                  <ol class="circle">
+                     <li>Choose a location:
+                        <select class="nice-select" id="selectpic">
+                           <option value="0" selected>Museum</option>
+                           <option value="1">Conference</option>
+                           <option value="2">Team building</option>
+                           <option value="3">Classroom</option>
+                           <option value="4">Neighbourhood</option>
+                        </select>
+                     </li>
+                     <div class="listborder"><br>
+                        <p> </p><br>
+                     </div>
+                     <li>Create your script</li>
+                     <div class="listborder"><br>
+                        <p> </p><br>
+                     </div>
+                     <li>Publish your scenario!</li>
+                  </ol>
+               </div>
+               <div class="col-12 col-md-6 eldercol">
+                  <img id="elderimg" src="img/Pictures/back&forth-museum.jpg">
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="why">
+         <div class="background-overlay"></div>
+         <div class="container-lg text-center">
+            <h1>Why choose for Back and Forth</h1>
+            <div class="row">
+               <div class="col-md-4 text-left whytext">
+                  <div><img src="img/Icons/Inclusive.svg"></div>
+                  <h3>Inclusive and collaborative</h3>
+                  <p>We designed our content so that there is never a team leader when playing the game. Content
+                     is equally distributed amongst the team, requiring everyone to work together. </p>
+               </div>
+               <div class="col-md-4 text-left whytext">
+                  <div><img src="img/Icons/Sync-Chat.svg"></div>
+                  <h3>Simple, synchronized solution</h3>
+                  <p>Back & Forth features a simple, text message-based interface that allows teams of any size to
+                     synchronize the content with one another&apos;s device. Best of all, we&apos;re
+                     built to run as a web application in a mobile
+                     browser, so no app download is required. </p>
+               </div>
+               <div class="col-md-4 text-left whytext">
+                  <div><img src="img/Icons/Educational.svg"></div>
+                  <h3>Multiple educational settings</h3>
+                  <p>Our software is open source so we are modifiable to a wide array of educational applications.
+                     Whether it&apos;s student orientations, event navigation, classroom activities, museums,
+                     tours, or conferences, we only require that
+                     there are multiple people involved, there is a single mission or common goal, and that it
+                     takes place in a single physical location. </p>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="resources">
+         <div class="container-lg">
+            <div class="row">
+               <div class="col-12 col-md-6 text-left resourcestext">
+                  <h1>Open source software for all educational experiences</h1>
+                  <br>
+                  <p>We want to make collaborative learning experiences accessible to everyone. Our software
+                     is open source and free for anyone to modify and use. </p>
+                  <br>
+                  <h4><a href="https://github.com/GlobalRepCentre/back-and-forth" target=“_blank”>Find us on GitHub
+                        <span class="githubicon"></span></a></h4>
+               </div>
+               <div class="col-12 col-md-6 text-center">
+                  <img src="img/Pictures/back&forth-educational.jpg">
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div id="aboutus">
+         <div class="color-overlay"></div>
+         <div class="container-lg">
+            <div class="textaboutus">
+               <h1>About Back & Forth</h1>
+               <br>
+               <p>Back & Forth wants to elevate educational experiences by providing an interactive, team-based, and
+                  gamified approach to learning.<br><br> Our open source software was born out of the Global Reporting
+                  Centre, an organization focused on innovating global journalism. <br><br>For more information visit <a
+                     href="https://globalreportingcentre.org/about/" target=“_blank”>The Global Reporting Centre</a>.
+               </p>
+            </div>
+         </div>
+      </div>
+
+      <div id="signup">
+         <div class="container-lg">
+            <div class="row">
+               <div class="col-12 col-md-6" id="expect">
+                  <h1>What to expect next</h1>
+                  <br>
+                  <div class="pinkcircle"><img src="img/Icons/Checkmark.svg"></div>
+                  <div class="expecttext">
+                     <h4>Project Investigation</h4>
+                     <p>We start by getting to know you, your chosen location, users, and the intended end goal of your
+                        experience. Then, we&apos;ll determine the best approach to creating your content. </p>
+                  </div>
+                  <div class="pinkcircle"><img src="img/Icons/Checkmark.svg"></div>
+                  <div class="expecttext">
+                     <h4>Collaborative Creation</h4>
+                     <p>Need a little help creating content or fine-tuning the software? We help with everything from
+                        developing a custom user interface to creating content and hosting the application. </p>
+                  </div>
+                  <div class="pinkcircle"><img src="img/Icons/Checkmark.svg"></div>
+                  <div class="expecttext">
+                     <h4>Integrate your Experience</h4>
+                     <p>We provide basic training to help you easily and effectively put your experience in the hands of
+                        your students. We are also standing by post-launch to offer additional support if needed.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="footer">
+         <div class="container-lg">
+            <div class="row">
+               <div class="col-12 col-md-6 text-left footercol1">&copy; Back&Forth 2020, All rights reserved.</div>
+               <div class="col-12 col-md-6">
+                  <div class="row footerrow2">
+                     <div class="col-sm-3 footercol">Terms of use</div>
+                     <div class="col-sm-3 footercol">Privacy policy</div>
+                     <div class="col-sm-3 footercol"><a href="technical-specs.html">Technical Specs</a></div>
+                     <div class="col-sm-3 footercol">Contact</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+
+</html>
