@@ -1,0 +1,207 @@
+@import 'variables-mixins';
+@import 'normalize';
+
+// Structure
+body {
+    font-family: $textfont;
+    font-size: 16px;
+    background: lighten($black, 5%);
+    scroll-behavior: smooth; // Enable native smooth scrolling in browsers that support it
+}
+#app-container {
+    max-width: 32em;
+    margin: 0 auto;
+    background: $white;
+    min-height: 100vh;
+}
+header {
+    text-align: center;
+}
+.content {
+    padding: 1rem;
+
+    p:first-of-type {
+        margin-top: 0;
+    }
+}
+
+header.fixed {
+    background-color: $black;
+    width: 100%;
+    height: 40px;
+    text-align: left;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: 32em;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+        button {
+            font-size: 1em;
+            line-height: 20px;
+            height: 40px;
+        }
+        ~ .content {
+            padding-top: calc(40px + 1rem);
+        }
+}
+
+// Typography
+p {
+    line-height: 1.7;
+        &.callout {
+            background: $grey;
+            padding: 0.5rem 0.75rem;
+        }
+}
+h1, h2, h3, h4, h5 {
+    font-family: $fancyfont;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin: 0.5rem 0;
+}
+.mono {
+    font-family: $consolefont;
+    font-weight: bold;
+}
+.emphatic, .badge {
+    font-family: $fancyfont;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.badge {
+    padding: 0.25rem;
+    font-size: 0.75rem;
+    border: 1px solid lighten($grey, 20%);
+}
+
+// Navigation
+button {
+    font-family: $fancyfont;
+    background-color: $black;
+    border: 0 none;
+    color: $white;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    outline: 0;
+
+    &.right {
+        float: right;
+    }
+
+    &:disabled {
+        color: darken($white, 20%);
+    }
+
+    &.inverted {
+        background: none;
+        color: $black;
+    }
+}
+.pre-launch button:disabled {
+    opacity: 0.5;
+}
+a {
+    color: $black;
+    font-weight: bold;
+}
+a.small { // For de-emphasized actions e.g. "Back" button
+    padding: 0.5rem 0;
+    margin-right: 1rem;
+    text-align: center;
+}
+.button-split {
+    // A class for displaying a "Back" or "Cancel" button on the left and a "Continue" or "Confirm" button on the right
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+        &.full {
+            button {
+                width: 100%;
+                min-height: 80px;
+                    &:first-child {
+                        margin-right: 2rem;
+                    }
+            }
+        }
+}
+
+// Elements
+img {
+    max-width: 100%;
+}
+
+// Forms
+input[type=text], input[type=email], input[type=number], textarea {
+    display: block;
+    width: 100%;
+    border: 0 none;
+    border-bottom: 2px solid;
+    margin-bottom: 1.5rem;
+    outline: 0;
+    transition: border-color 0.4s;
+    padding: 0.25rem 0;
+    line-height: normal; // Fix for placeholder getting cut off in FF
+        &.deselected { border-color: $red; }
+        &.selected { border-color: $black; }
+        &:invalid { box-shadow: none; }
+}
+textarea {
+    resize: none;
+}
+[type=checkbox], [type=radio] {
+    margin-right: 0.5rem;
+    box-shadow: none;
+}
+fieldset {
+    border: 2px solid;
+    transition: border-color 0.4s;
+    margin-bottom: 1.5rem;
+        legend {
+            padding: 0 0.5rem;
+        }
+        div {
+            margin: 0.5rem 0;
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+                label {
+                    font-size: 0.9em;
+                }
+        }
+        &.deselected { border-color: $red}
+        &.selected { border-color: $black;}
+
+}
+
+// Accessibility
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+// Animations
+@-webkit-keyframes fade {
+    from { opacity: 1; }
+	to {   opacity: 0; }
+}
+
+@keyframes fade {
+    from { opacity: 1; }
+	to {   opacity: 0; }
+}
+
+@import './component-styles';

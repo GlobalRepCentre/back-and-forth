@@ -1,0 +1,76 @@
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:8.11.1-browsers
+      - image: redis:4.0-alpine
+      - image: circleci/postgres:10.1-alpine-ram
+        environment:
+          POSTGRES_USER: boris
+          POSTGRES_PASSWORD: testpassword
+          POSTGRES_DB: boris_test
+    environment:
+      NODE_ENV: test
+      BORIS_CONFIG: '{"test": {"db_port": 5432, "db_password": "testpassword", "redis_port": "6379", "redis_password": null}}'
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      
+      # build static assets
+      - run: npm run build
+
+      # run tests! (use runInBand to avoid memory issues and slowness - https://discuss.circleci.com/t/babel-7-jest-results-in-timeout/25383/3)
+      - run: npm run test -- --runInBand
+  build:
+    docker:
+      - image: circleci/node:8.11.1-browsers
+    environment:
+      NODE_ENV: production
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Transpile TypeScript
+          command: ./node_modules/.bin/tsc -p . --skipLibCheck
+      - run:
+          name: Build static assets using webpack
+          command: npm run build
+      - setup_remote_docker
+      - run:
+          name: Create image and push to Docker Hub
+          command: |
+            docker build -t GlobalRepCentre/back-and-forth:$CIRCLE_BRANCH .
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+            docker push GlobalRepCentre/back-and-forth:$CIRCLE_BRANCH
+
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - test
+      - build:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - live

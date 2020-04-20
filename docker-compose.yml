@@ -1,0 +1,49 @@
+version: '3'
+services:
+  # Redis for cache and pub/sub events to connected users
+  redis:
+    image: redis:4.0-alpine
+    command: >
+     --requirepass devpassword
+  # All persistent user data and mission data is stored in PostgreSQL
+  postgres:
+    image: "postgres:10.1-alpine"
+    ports:
+      - 3332:5432
+    environment:
+     POSTGRES_PASSWORD: devpassword
+     POSTGRES_USER: boris
+     POSTGRES_DB: boris
+  # The backend container runs the backend during development
+  # It also has the compiled frontend and serves it.
+  backend:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    image: app  # Tag this for use by the frontend too
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - 3333:3333  # The Backend server (HTTP)
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend/dist:/app/frontend/dist
+      - ./common:/app/common
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    command: npm run server
+  # The frontend container is used only in development; it watches for
+  # changes to the React frontend code then re-compiles it.
+  frontend:
+    image: app  # Use the image built above
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app/frontend
+      - ./common:/app/common
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+    command: npm run watch

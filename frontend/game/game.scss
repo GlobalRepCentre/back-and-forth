@@ -1,0 +1,372 @@
+@-webkit-keyframes spinning {
+	from { background-position: 0; }
+	to { background-position: -720px; }
+}
+
+@keyframes spinning {
+	from { background-position: 0; }
+	to { background-position: -720px; }
+}
+
+@-webkit-keyframes initialized {
+	from { background-position: -720px; }
+	to { background-position: -1360px; }
+}
+
+@keyframes initialized {
+	from { background-position: -720px; }
+	to { background-position: -1360px; }
+}
+
+@-webkit-keyframes pop-in {
+	0% { transform: scale(0.95); opacity: 0; }
+	70% { transform: scale(1.05); }
+	100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pop-in {
+	0% { transform: scale(0.95); opacity: 0; }
+	70% { transform: scale(1.05); }
+	100% { transform: scale(1); opacity: 1; }
+}
+
+.splash, .sponsor {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: $black;
+    z-index: 3;
+    max-width: 32em;
+}
+
+.sponsor, .boris {
+    height: 100%;
+    color: $white;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.sponsor {
+    text-align: center;
+    align-items: center;
+    background: darken($black, 20%);
+    -webkit-animation: 1s 4.5s forwards fade;
+    animation: 1s 4.5s forwards fade;
+    div {
+        padding: 0.5rem 2rem;
+        opacity: 0;
+        overflow-y: auto;
+        -webkit-animation: 1s 0.5s reverse forwards fade;
+        animation: 1s 0.5s reverse forwards fade;
+        img {
+            margin-bottom: 2rem;
+            max-width: 160px;
+            width: 100%;
+        }
+    }
+}
+
+.boris {
+    padding: 0 3rem;
+    .boris-container {
+        height: 80px;
+        width: 80px;
+        background-image: url('./images/boris-init-atlas.png');
+        background-repeat: no-repeat;
+        -webkit-animation: 0.6s 4.5s steps(9) 6 spinning, 0.7s 8.1s steps(8) forwards initialized;
+        animation: 0.6s 4.5s steps(9) 6 spinning, 0.7s 8.1s steps(8) forwards initialized;
+    }
+    h3 {
+        font-size: 2.2em;
+    }
+}
+
+.splash.hidden {
+    -webkit-animation: 1.5s forwards fade;
+    animation: 1.5s forwards fade;
+}
+
+.game, .market-prelude {
+    .content {
+        &::after {
+            // We need a non-floated element at the end to force .content to have a height > 0
+            content: " ";
+            clear: both;
+            display: block;
+        }
+    }
+    header {
+        h1 {
+            color: darken($white, 20%);
+            font-size: 1.2em;
+        }
+        .help {
+            font-size: 1.3em;
+        }
+    }
+    .chat-segment {
+        margin: 0 0 1.5rem 40px;
+        float: left;
+        clear: both;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        width: fill-available;
+
+            p {
+                color: black;
+                background: $grey;
+                padding: 0.4em 0.5rem;
+                margin: 0;
+                margin: 0.1rem 0;
+                border-radius: 3px;
+                border-bottom-left-radius: 0;
+                position: relative;
+                float: left;
+                clear: left;
+                    &:last-child:before {
+                        content: url('./images/chat-boris.png');
+                        position: absolute;
+                        height: 40px;
+                        height: 40px;
+                        bottom: 0;
+                        left: -48px;
+                    }
+                    span.saltines {
+                        border-bottom: 2px solid;
+                        font-weight: bold;
+                        position: relative;
+                        border-color: $green;
+                            &.lost {
+                                border-color: $red;
+                            }
+                    }
+                    span.quake {
+                        animation-duration: 0.7s;
+                        animation-timing-function: ease-in-out;
+                        animation-fill-mode: forwards;
+                        animation-iteration-count: 12;
+                        animation-name: jittery;
+                        font-size: 2em;
+                        font-weight: bold;
+                        display: inline-block;
+                    }
+                    span.vanish {
+                        -webkit-animation: 1s 4s fade forwards;
+                        animation: 1s 4s fade forwards;
+                    }
+                    &.in {
+                        animation: pop-in 0.2s forwards ease-in;
+                    }
+                img {
+                    // Offset paragraph padding
+                    margin-bottom: -0.4em;
+                }
+            }
+            &.backfeed {   
+                p:last-child:before {
+                    content: url('./images/chat-backfeed.png');                 
+                }             
+            }
+            &.clarence {
+                p:last-child:before {
+                    content: url('./images/chat-clarence.png');                    
+                }
+            }
+
+        // A Progress step (which is inside a chat-segment):
+        h3.progress-heading {
+            color: lighten($black, 10%);
+            font-size: 0.8em;
+            margin-bottom: 0.2rem;
+        }
+        progress {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 12px;
+
+            &::-webkit-progress-bar {
+                background-color: $grey;
+                border-radius: 2.5px;
+            }
+            &::-webkit-progress-value {
+                background-color: $green;
+                border-radius: 2.5px;
+            }
+        }
+        // A Map shown at the top of a map step
+        div.map-step-map {
+            width: 100%;
+            height: 240px;
+        }
+    }
+    .response-segment {
+        margin: 0 0 1.5rem 40px;
+        float: right;
+        text-align: right;
+        clear: both;
+            .past-entry {
+                background: $grey;
+            }
+            button, .past-entry {
+                text-align: right;
+                font-family: $textfont;
+                font-size: 1em;
+                border-radius: 3px;
+                text-transform: none;
+                border-bottom-right-radius: 0;
+                padding: 0.4em 0.5rem;
+                line-height: 1.7;
+                margin: 0.1rem 0;
+                float: right;
+                clear: right;
+                    &:disabled {
+                        opacity: 0.5;
+                    }
+                    &.correct {
+                        background: $green;
+                        color: $black;
+                        opacity: 1
+                    }
+                    &.wrong {
+                        background: $red;
+                        color: $white;
+                        opacity: 1
+                    }
+            }
+            form {
+                clear: right;
+                padding: 0.5rem;
+                background: $black;
+                border-radius: 3px;
+                border-bottom-right-radius: 0;
+                margin-right: 0.5rem;
+                    input, textarea {
+                        margin-bottom: 0;
+                        background: none;
+                        color: $white;
+                        border-color: $white;
+                        display: block;
+                    }
+                    button {
+                        text-transform: uppercase;
+                        font-family: $fancyfont;
+                        margin: 1rem -0.5rem 0;
+                    }
+            }
+    }
+    .no-segment {
+        background: $black;
+        float: left;
+        clear: both;
+        margin: 0.5rem -1rem 2.3rem;
+        padding: 1rem;
+        position: relative;
+        width: 100%;
+            p {
+                color: $white;
+                font-family: $consolefont;    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    &:before {
+                        content: '>> ';
+                    }      
+            }
+            &:before, &:after {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                height: 0.8rem;
+                background-size: 0.7rem 2rem;
+                background-position: 0 -1rem;
+            }
+            &:before {
+                background-image: 
+                linear-gradient(45deg, $black 33.333%, transparent 33.333%, transparent 66.667%, $black 66.667%),
+                linear-gradient(-45deg, $black 33.333%, transparent 33.333%, transparent 66.667%, $black 66.667%);
+                top: -0.8rem;
+            }
+            &:after {
+                background-image: 
+                linear-gradient(45deg, transparent 33.333%, $black 33.333%, $black 66.667%, transparent 66.667%),
+                linear-gradient(-45deg, transparent 33.333%, $black 33.333%, $black 66.667%, transparent 66.667%);
+                bottom: -0.8rem;
+            }
+    }
+    .bulletin-segment {
+        position: relative;
+        margin: 0 0 1.5rem;
+        float: left;
+        clear: both;
+        border-top: 2px solid $grey;
+        border-bottom: 2px solid $grey;
+        padding: 0.5rem 0;
+        &:after {
+            content: 'BULLETIN';
+            opacity: 0.1;
+            font-family: $fancyfont;
+            font-size: 48px;
+            transform: rotate(-10deg) translateY(-45%);
+            position: absolute;
+            display: block;
+            top: 45%;
+            text-align: center;
+            width: 100%;
+        }
+        p:last-child {
+            margin-bottom: 0;
+        }
+    }
+    .doc {
+        font-family: $consolefont;
+    }
+    .redact {
+        background: #000000;
+    }
+    hr {
+        float: left;
+        clear: both;
+        width: 100%;
+        margin: 1em 0;
+    }
+}
+
+@keyframes jittery {
+    10% {
+        transform: translate(-2px, -3px) scale(1.01, 1.01);
+    }
+    20% {
+        transform: translate(3px, 2px) scale(.99, .99);
+    }
+    30% {
+        transform: translate(-4px, -5px) scale(1.01, 1.01);
+    }
+    40% {
+        transform: translate(2px, 3px) scale(1, 1);
+    }
+    50% {
+        transform: translate(-1px, -2px) scale(.98, .98);
+    }
+    60% {
+        transform: translate(0px, 3px) scale(1.02, 1.02);
+    }
+    70% {
+        transform: translate(-2px, -4px) scale(1, 1);
+    }
+    80% {
+        transform: translate(3px, 5px) scale(.99, .99);
+    }
+    90% {
+        transform: translate(-5px, -3px) scale(1.1, 1.1);
+    }
+    100% {
+        transform: translate(3px, 1px) scale(.95, .95);
+    }
+}

@@ -1,0 +1,55 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Back & Forth (Development)",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["up"],
+            "isBackground": true,
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "windows": {
+                // docker-start.cmd is a one-line command that runs
+                // "C:\Program Files\Git\bin\bash.exe" -c " \"/c/Program Files/Docker Toolbox/start.sh\" \"%*\""
+                // Which will run the arguments (docker-compose in this case) via "Docker Quickstart Terminal".
+                // Docker (and start.sh) require being run via bash
+                "command": "C:\\Program Files\\Docker Toolbox\\docker-start.cmd",
+                "options": {
+                    "cwd": "C:\\Program Files\\Docker Toolbox\\",
+                },
+                "args": ["docker-compose", "up"],
+            }
+        },
+        {
+            "label": "Open a backend shell",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["exec", "backend", "/bin/bash"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Apply database migrations",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["exec", "backend", "npm", "run", "migrate"],
+            "isBackground": false,
+            "problemMatcher": [],
+            "windows": {
+                // docker-start.cmd is a one-line command that runs
+                // "C:\Program Files\Git\bin\bash.exe" -c " \"/c/Program Files/Docker Toolbox/start.sh\" \"%*\""
+                // Which will run the arguments (docker-compose in this case) via "Docker Quickstart Terminal".
+                // Docker (and start.sh) require being run via bash
+                "command": "C:\\Program Files\\Docker Toolbox\\docker-start.cmd",
+                "options": {
+                    "cwd": "C:\\Program Files\\Docker Toolbox\\",
+                },
+                "args": ["docker-compose", "up"],
+            }
+        },
+    ]
+}
