@@ -19,9 +19,7 @@
                 // Which will run the arguments (docker-compose in this case) via "Docker Quickstart Terminal".
                 // Docker (and start.sh) require being run via bash
                 "command": "C:\\Program Files\\Docker Toolbox\\docker-start.cmd",
-                "options": {
-                    "cwd": "C:\\Program Files\\Docker Toolbox\\",
-                },
+                "options": { "cwd": "C:\\Program Files\\Docker Toolbox\\", },
                 "args": ["docker-compose", "up"],
             }
         },
@@ -49,6 +47,32 @@
                     "cwd": "C:\\Program Files\\Docker Toolbox\\",
                 },
                 "args": ["docker-compose", "up"],
+            }
+        },
+        {
+            "label": "Build production docker image",
+            "type": "shell",
+            "command": "docker",
+            "args": ["build", "-t", "back-and-forth-local-build", "."],
+            "options": {"cwd": "${workspaceFolder}"},
+            "problemMatcher": [],
+            "windows": {
+                "command": "C:\\Program Files\\Docker Toolbox\\docker-start.cmd",
+                "options": { "cwd": "C:\\Program Files\\Docker Toolbox\\", },
+                "args": ["docker", "build", "-t", "back-and-forth-local-build", "."],
+            },
+        },
+        {
+            "label": "Run Back & Forth (Verification)",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": ["-f", "docker-compose-verify.yml", "up"],
+            "options": {"cwd": "${workspaceFolder}"},
+            "problemMatcher": [],
+            "windows": {
+                "command": "C:\\Program Files\\Docker Toolbox\\docker-start.cmd",
+                "options": { "cwd": "C:\\Program Files\\Docker Toolbox\\", },
+                "args": ["docker-compose", "-f", "docker-compose-verify.yml", "up"],
             }
         },
     ]
