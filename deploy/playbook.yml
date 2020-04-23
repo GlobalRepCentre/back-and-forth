@@ -1,0 +1,20 @@
+---
+# A playbook that deploys Back & Forth onto a single Ubuntu 20.04 LTS Virtual Machine
+#
+# You can run this playbook with:
+#    ansible-playbook -i 123.123.123.123, -e "backforth_instance_name=prod" playbook.yml
+- hosts: all
+  remote_user: root
+  vars:
+    common_server_hostname: "backforth-{{backforth_instance_name}}"
+    # Avoid a minor conflict between 'database' and 'app' roles re whether spiped client listens on 127.0.0.1 or docker's 192.168.0.1
+    postgres_secure_ip: "{{ traefik_docker_apps_network_host_ip }}"
+    # Avoid a minor conflict between 'database' and 'app' roles re whether spiped client listens on 127.0.0.1 or docker's 192.168.0.1
+    redis_secure_ip: "{{ traefik_docker_apps_network_host_ip }}"
+  vars_files:
+    - vars/globals.yml
+    - "./private/{{backforth_instance_name}}/vars.yml"
+  roles:
+    - role: database
+    - role: redis
+    - role: app

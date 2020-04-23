@@ -1,21 +1,21 @@
 version: '2'
 
 services:
-  boris:
-    image: fromthestorm/boris:{{ boris_image_tag }}
+  back-and-forth:
+    image: back-and-forth:{{ boris_image_tag }}
     restart: always
     expose:
       - 3333
     networks:
       - {{ traefik_docker_apps_network_name }}
       - default
-    container_name: boris
+    container_name: back-and-forth
     env_file: 
       - {{ boris_app_environ_file }}
     labels:
       - "traefik.docker.network={{ traefik_docker_apps_network_name }}"
       - "traefik.enable=true"
-      - "traefik.basic.frontend.rule=Host:{{boris_app_domain}}"
+      - "traefik.basic.frontend.rule=Host:{{backforth_app_domain}}"
       - "traefik.basic.port=3333"
       - "traefik.basic.protocol=http"
 

@@ -19,10 +19,9 @@
 
 - name: Ensure handlers are notified now to avoid firewall conflicts.
   meta: flush_handlers
-  when: docker_restart_on_package_change
 
 - include_tasks: docker-compose.yml
-  when: docker_install_compose
+  when: docker_install_compose | bool
 
 - include_tasks: docker-users.yml
-  when: docker_users
+  when: docker_users | length > 0

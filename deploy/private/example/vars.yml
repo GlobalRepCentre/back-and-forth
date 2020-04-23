@@ -1,0 +1,9 @@
+---
+# The instance name is usually set on the command line via "-e" or via group_vars
+# backforth_instance_name: prod
+backforth_app_domain: back-and-forth.yoursite.example
+traefik_default_domain: "{{backforth_app_domain}}"
+traefik_acme_email: you@yoursite.example
+boris_image_tag: latest
+postgres_host: localhost
+redis_host: localhost

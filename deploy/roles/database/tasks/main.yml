@@ -1,9 +1,8 @@
 ---
 - name: Install required packages
-  apt: name={{ item }} state=present
-  with_items:
-    - postgresql-{{boris_postgresql_version}}
-    - postgresql-contrib-{{boris_postgresql_version}}
+  apt:
+    name: ['postgresql-{{boris_postgresql_version}}', 'postgresql-contrib-{{boris_postgresql_version}}']
+    state: present
 
 - name: Enable password auth over local socket
   lineinfile:
@@ -23,7 +22,10 @@
   become_user: postgres
 
 - name: Allow PostgreSQL connections via spiped through firewall
-  ufw: rule=allow port={{postgres_spiped_port}} proto=tcp
+  ufw:
+    rule: allow
+    port: "{{postgres_spiped_port}}"
+    proto: tcp
 
 - name: Install postgres backup script
   copy: src=backup-postgres.sh dest={{database_postgres_backup_script_file}} owner=root mode=755

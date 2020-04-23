@@ -9,7 +9,7 @@
   remote_user: root
   vars:
     # hostname:
-    common_server_hostname: "boris-{{boris_instance_name}}-app"
+    common_server_hostname: "backforth-{{backforth_instance_name}}-app"
   vars_files:
     - vars/globals.yml
   roles:

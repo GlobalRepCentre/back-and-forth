@@ -2,15 +2,9 @@
 - name: update apt cache
   apt: update_cache=yes
 - name: Install required packages
-  apt: name={{ item }} state=present
-  with_items:
-    - htop
-    - unattended-upgrades
-    - fail2ban
-    - build-essential
-    - g++
-    - ntp
-
+  apt:
+    name: ['htop', 'unattended-upgrades', 'fail2ban', 'build-essential', 'g++', 'ntp']
+    state: present
 - name: Set hostname
   hostname: name="{{common_server_hostname}}"
 - name: Add hostname to /etc/hosts

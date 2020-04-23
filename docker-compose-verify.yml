@@ -15,7 +15,7 @@ services:
       POSTGRES_USER: boris
       POSTGRES_DB: boris
   prod-verify:
-    image: back-and-forth-local-build:latest
+    image: back-and-forth:latest
     depends_on:
       - redis
       - postgres

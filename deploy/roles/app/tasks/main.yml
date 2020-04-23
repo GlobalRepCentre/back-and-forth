@@ -47,18 +47,18 @@
     owner: root
 
 - name: Enable the BORIS Docker service
-  docker_service:
+  docker_compose:
     project_src: "{{boris_app_environ_dir}}"
-    project_name: boris
+    project_name: back-and-forth
     state: present
 
 # Run migrations
 - name: Run migrations
-  command: docker exec boris node /app/backend/db/migrate.js
+  command: docker exec back-and-forth node /app/backend/db/migrate.js
 # Restart container (rquired after new tables created in migrations)
-- name: Restart boris so massive-js will pick up new DB tables
-  docker_service:
+- name: Restart back-and-forth so massive-js will pick up new DB tables
+  docker_compose:
     project_src: "{{boris_app_environ_dir}}"
-    project_name: boris
+    project_name: back-and-forth
     state: present
     restarted: yes

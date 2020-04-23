@@ -3,9 +3,9 @@
   docker_network:
     name: "{{ traefik_docker_apps_network_name }}"
     driver: bridge
-    ipam_options:
-      subnet: "{{ traefik_docker_apps_network_subnet }}"
-      gateway: "{{ traefik_docker_apps_network_host_ip }}"
+    ipam_config:
+      - subnet: "{{ traefik_docker_apps_network_subnet }}"
+        gateway: "{{ traefik_docker_apps_network_host_ip }}"
 # Allow access from containers to services on the host's virtual IP
 - name: Allow access from containers to services on the host's virtual IP
   ufw:
@@ -40,18 +40,18 @@
     owner: root
 
 - name: Enable the Traefik Docker service
-  docker_service:
+  docker_compose:
     project_src: "{{traefik_config_dir}}"
     state: present
 
 - name: Allow access on port 80
   ufw:
     rule: allow
-    port: 80
+    port: "80"
     proto: tcp
 
 - name: Allow access on port 443
   ufw:
     rule: allow
-    port: 443
+    port: "443"
     proto: tcp
