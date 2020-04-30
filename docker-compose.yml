@@ -28,12 +28,7 @@ services:
       - 3333:3333  # The Backend server (HTTP)
     stdin_open: true
     tty: true
-    volumes:
-      - ./backend:/app/backend
-      - ./frontend/dist:/app/frontend/dist
-      - ./common:/app/common
-      - ./package.json:/app/package.json
-      - ./tsconfig.json:/app/tsconfig.json
+    # volumes: See docker-compose.override.yml
     command: npm run server
   # The frontend container is used only in development; it watches for
   # changes to the React frontend code then re-compiles it.
@@ -41,9 +36,7 @@ services:
     image: app  # Use the image built above
     depends_on:
       - backend
-    volumes:
-      - ./frontend:/app/frontend
-      - ./common:/app/common
-      - ./package.json:/app/package.json
-      - ./tsconfig.json:/app/tsconfig.json
+    stdin_open: true
+    tty: true
+    # volumes: See docker-compose.override.yml
     command: npm run watch

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  # Configuration used in development (docker-compose.yml) but not CI
+  backend:
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend/dist:/app/frontend/dist
+      - ./common:/app/common
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
+  frontend:
+    volumes:
+      - ./frontend:/app/frontend
+      - ./common:/app/common
+      - ./package.json:/app/package.json
+      - ./tsconfig.json:/app/tsconfig.json
