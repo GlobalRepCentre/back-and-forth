@@ -1,0 +1,3 @@
+---
+backforth_deploy_private_dir: "./private/{{backforth_instance_name}}/"
+ansible_python_interpreter: python3

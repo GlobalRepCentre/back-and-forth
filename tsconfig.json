@@ -1,0 +1,28 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "es2017",
+        "lib": [
+            "es5",
+            "es6",
+            "es2015.promise"
+        ],
+        "jsx": "react",
+    },
+    "include": [
+        "**/*.ts",
+        "**/*.tsx"
+    ],
+    "exclude": [
+        "backend/test-lib",
+        "frontend",
+        "integration",
+        "**/*-test.ts",
+        "**/*-test.tsx",
+        "node_modules"
+    ]
+}

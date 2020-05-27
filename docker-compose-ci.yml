@@ -1,0 +1,23 @@
+version: '3'
+services:
+  # Backend container for testing should not run the server
+  backend:
+    command: /bin/sh
+    # We can't directly mount files from CircleCI primary container into docker containers,
+    # So we create volumes instead and copy the files over.
+    volumes:
+      - backend:/app/backend
+      - frontend:/app/frontend:ro
+      - common:/app/common
+  # The frontend container for testing should not run "watch"
+  frontend:
+    command: /bin/sh
+    # We can't directly mount files from CircleCI primary container into docker containers,
+    # So we create volumes instead and copy the files over.
+    volumes:
+      - frontend:/app/frontend
+      - common:/app/common
+volumes:
+  backend:
+  frontend:
+  common:

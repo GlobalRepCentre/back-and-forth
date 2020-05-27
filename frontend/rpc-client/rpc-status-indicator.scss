@@ -1,0 +1,15 @@
+.uses-rpc {
+    & > .rpc-status-indicator {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        max-width: 32em; // Same as the #app-container limit
+        height: 40px;
+        background-color: rgb(133, 0, 0);
+        color: white;
+        padding: 10px;
+        text-align: center;
+        z-index: 99999;
+        box-sizing: border-box;
+    }
+}

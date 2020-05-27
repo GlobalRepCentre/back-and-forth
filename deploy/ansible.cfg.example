@@ -1,0 +1,5 @@
+[defaults]
+inventory = ./private/ansible_hosts
+[ssh_connection]
+pipelining = True
+ssh_args = -F ./private/ssh_config

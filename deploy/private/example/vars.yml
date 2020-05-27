@@ -1,0 +1,16 @@
+---
+# The instance name is usually set on the command line via "-e" or via group_vars
+# backforth_instance_name: prod
+
+# The name of your app (set as "From" name in emails)
+backforth_app_name: Back & Forth
+# Emails from the app will come from this address:
+backforth_app_email: info@example.com
+# The domain that the app is running on:
+backforth_app_domain: back-and-forth.yoursite.example
+traefik_default_domain: "{{backforth_app_domain}}"
+traefik_acme_email: you@yoursite.example
+backforth_image_repo: globalrepcentre/back-and-forth
+backforth_image_tag: latest
+postgres_host: localhost
+redis_host: localhost

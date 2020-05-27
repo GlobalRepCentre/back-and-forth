@@ -1,0 +1,4 @@
+{
+    "eslint.enable": false,
+    "npm.enableScriptExplorer": true
+}

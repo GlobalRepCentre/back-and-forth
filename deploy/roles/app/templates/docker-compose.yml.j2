@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+  back-and-forth:
+    image: {{ backforth_image_repo }}:{{ backforth_image_tag }}
+    restart: always
+    expose:
+      - 3333
+    networks:
+      - {{ traefik_docker_apps_network_name }}
+      - default
+    container_name: back-and-forth
+    env_file: 
+      - {{ backforth_app_environ_file }}
+    labels:
+      - "traefik.docker.network={{ traefik_docker_apps_network_name }}"
+      - "traefik.enable=true"
+      - "traefik.basic.frontend.rule=Host:{{backforth_app_domain}}"
+      - "traefik.basic.port=3333"
+      - "traefik.basic.protocol=http"
+
+networks:
+  {{traefik_docker_apps_network_name}}:
+    external: true
