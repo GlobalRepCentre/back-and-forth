@@ -1,6 +1,7 @@
 boris_app_mode: production
 backforth_app_domain: "something.apocalypsemadeeasy.com"
-boris_image_tag: "latest"
+backforth_image_repo: "globalrepcentre/back-and-forth"
+backforth_image_tag: "latest"
 boris_mailgun_api_key: "{{ lookup('file', boris_deploy_private_dir + 'credentials/mailgun_api_key') }}"
 boris_app_db_host: "{{traefik_docker_apps_network_host_ip}}"  # In order to be accessible to docker containers, spiped for the DB listens on this IP instead of 127.0.0.1
 boris_app_db_name: "boris_{{backforth_instance_name}}"

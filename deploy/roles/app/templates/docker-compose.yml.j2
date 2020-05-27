@@ -2,7 +2,7 @@ version: '2'
 
 services:
   back-and-forth:
-    image: back-and-forth:{{ boris_image_tag }}
+    image: {{ backforth_image_repo }}:{{ backforth_image_tag }}
     restart: always
     expose:
       - 3333

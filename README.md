@@ -47,12 +47,6 @@ virtual machine (typically costs $5/month).
 
 Here's how to deploy a public instance of Back & Forth on a virtual machine:
 
-1. First, in VS Code, choose Terminal > Run Task > Build Production Docker Image
-   It should eventually say `Successfully tagged back-and-forth:latest`
-1. Test the image: go to Terminal > Run Task > Run Back & Forth (Verification)
-1. Go to http://localhost:3333/ and make sure everything is working.
-1. Back in the VS Code Terminal, press CTRL-C to stop the verification container.
-
 1. Using any cloud VM provider (AWS, DigitalOcean, Linode, etc.), provision an
    Ubuntu 20.04 LTS VM, with at least 512 MB of RAM (1+ GB recommended).
    Note the VM's IP address.
@@ -79,17 +73,20 @@ Here's how to deploy a public instance of Back & Forth on a virtual machine:
    up for [MailGun](https://www.mailgun.com/) and put an API key (and nothing
    else) into a file at `deploy/private/prod/credentials/mailgun_api_key`. Or,
    if you don't want email sending for now, just create that as a blank file.
-1. If you get an error like `Error starting project 404 Client Error: Not Found
-   (manifest for back-and-forth:latest not found)`, then you need to upload the
-   Back & Forth image to your server. The best way to do this is to set up a
-   project on Docker Hub or any similar registry, but a simple way to bypass
-   that requirement in the meantime is to upload the whole image with the
-   following command:
 
-   ```sh
-   docker save back-and-forth | ssh -C root@123.123.123.123 docker load
-   ```
+Deploying a custom build
+------------------------
 
-   (Substitute the IP of your virtual machine.)
+The above instructions will deploy the latest official release of Back & Forth.
+To deploy a customized version with any changes you've made locally, follow
+these instructions:
 
-   Beware that this may use about 1 GB of network traffic.
+1. First, in VS Code, choose Terminal > Run Task > Build Production Docker Image
+   It should eventually say `Successfully tagged back-and-forth:latest`
+1. Test the image: go to Terminal > Run Task > Run Back & Forth (Verification)
+1. Go to http://localhost:3333/ and make sure everything is working.
+1. Back in the VS Code Terminal, press CTRL-C to stop the verification container.
+1. Push the resulting image to Docker Hub or any other docker registry.
+1. In `deploy/private/prod/vars.yml`, change `backforth_image_repo` to specify
+   your custom registry/repository.
+1. Run the `ansible-playbook` command again to re-deploy.
