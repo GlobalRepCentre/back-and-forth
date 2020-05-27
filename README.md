@@ -49,8 +49,10 @@ Here's how to deploy a public instance of Back & Forth on a virtual machine:
 
 1. Using any cloud VM provider (AWS, DigitalOcean, Linode, etc.), provision an
    Ubuntu 20.04 LTS VM, with at least 512 MB of RAM (1+ GB recommended).
-   Note the VM's IP address.
-   Ensure that you can SSH into the VM (`ssh root@vm-ip-here`).
+1. Configure the VM's firewall to only allow ingress from the internet on ports
+   22, 80, and 443.
+1. Note the VM's IP address and ensure that you can SSH into the VM
+   (`ssh root@vm-ip-here`).
 1. Using any domain name that you own (e.g. `back-and-forth.yoursite.example`),
    update the DNS settings so that the domain's A record points to the IP of your
    new VM. A domain name is required because Back & Forth uses HTTPS. If you need,
