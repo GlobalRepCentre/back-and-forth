@@ -9,5 +9,5 @@
 
 - name: Install required packages
   apt:
-    name: ['postgresql-server-dev-{{boris_postgresql_version}}', 'postgresql-client-{{boris_postgresql_version}}', 'python3-psycopg2']
+    name: ['postgresql-server-dev-{{database_postgresql_version}}', 'postgresql-client-{{database_postgresql_version}}', 'python3-psycopg2']
     state: present

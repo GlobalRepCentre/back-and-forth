@@ -1,34 +1,36 @@
-boris_app_mode: production
+backforth_app_name: "Back & Forth"
+backforth_app_email: "info@example.com"
+backforth_app_mode: production
 backforth_app_domain: "something.apocalypsemadeeasy.com"
 backforth_image_repo: "globalrepcentre/back-and-forth"
 backforth_image_tag: "latest"
-boris_mailgun_api_key: "{{ lookup('file', boris_deploy_private_dir + 'credentials/mailgun_api_key') }}"
-boris_app_db_host: "{{traefik_docker_apps_network_host_ip}}"  # In order to be accessible to docker containers, spiped for the DB listens on this IP instead of 127.0.0.1
-boris_app_db_name: "boris_{{backforth_instance_name}}"
-boris_app_db_user: "boris_{{backforth_instance_name}}"
-boris_app_db_password: "{{ lookup('password', boris_deploy_private_dir + 'credentials/app_pgpassword length=15') }}"
-boris_app_secret: "{{ lookup('password', boris_deploy_private_dir + 'credentials/app_secret length=50') }}"
-boris_app_environ_dir: "/etc/back-and-forth"
-boris_app_environ_file: "{{boris_app_environ_dir}}/{{backforth_instance_name}}.env"
+backforth_mailgun_api_key: "{{ lookup('file', backforth_deploy_private_dir + 'credentials/mailgun_api_key') }}"
+backforth_app_db_host: "{{traefik_docker_apps_network_host_ip}}"  # In order to be accessible to docker containers, spiped for the DB listens on this IP instead of 127.0.0.1
+backforth_app_db_name: "backforth_{{backforth_instance_name}}"
+backforth_app_db_user: "backforth_{{backforth_instance_name}}"
+backforth_app_db_password: "{{ lookup('password', backforth_deploy_private_dir + 'credentials/app_pgpassword length=15') }}"
+backforth_app_secret: "{{ lookup('password', backforth_deploy_private_dir + 'credentials/app_secret length=50') }}"
+backforth_app_environ_dir: "/etc/back-and-forth"
+backforth_app_environ_file: "{{backforth_app_environ_dir}}/{{backforth_instance_name}}.env"
 
 
-boris_config_base:
+backforth_config_base:
   app_domain: '{{ backforth_app_domain }}'
   app_protocol: 'https'
   listen_port: 3333
   resource_url: '/s'
-  mailgun_api_key: "{{ boris_mailgun_api_key }}"
-  system_emails_from: "BORIS <info@apocalypsemadeeasy.com>"
+  mailgun_api_key: "{{ backforth_mailgun_api_key }}"
+  system_emails_from: "{{ backforth_app_name }} <{{ backforth_app_email }}>"
   redis_host: "{{ traefik_docker_apps_network_host_ip }}"
   redis_port: "{{redis_secure_port}}"
   redis_password: "{{redis_password}}"
-  redis_prefix: "boris:{{backforth_instance_name}}:"
-  db_host: "{{ boris_app_db_host }}"
+  redis_prefix: "backforth:{{backforth_instance_name}}:"
+  db_host: "{{ backforth_app_db_host }}"
   db_port: "{{ postgres_secure_port }}"
-  db_name: "{{ boris_app_db_name }}"
-  db_user: "{{ boris_app_db_user }}"
-  db_password: "{{ boris_app_db_password }}"
-  secret_key: "{{ boris_app_secret }}"
+  db_name: "{{ backforth_app_db_name }}"
+  db_user: "{{ backforth_app_db_user }}"
+  db_password: "{{ backforth_app_db_password }}"
+  secret_key: "{{ backforth_app_secret }}"
 
-boris_config:
-  "{{ {boris_app_mode: boris_config_base} }}"
+backforth_config:
+  "{{ {backforth_app_mode: backforth_config_base} }}"

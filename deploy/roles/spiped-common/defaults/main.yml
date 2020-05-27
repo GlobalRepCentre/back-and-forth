@@ -7,4 +7,4 @@ spiped_servicename: service
 spiped_keyfile: /etc/spiped/{{spiped_servicename}}.key
 # path to where the keyfile is stored on the machine running ansible.
 # This file will be securely generated if it doesn't already exist.
-spiped_local_keyfile: "{{boris_deploy_private_dir}}credentials/{{spiped_servicename}}_spipe_key"
+spiped_local_keyfile: "{{backforth_deploy_private_dir}}credentials/{{spiped_servicename}}_spipe_key"

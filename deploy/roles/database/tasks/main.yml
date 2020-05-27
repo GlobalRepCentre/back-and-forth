@@ -1,12 +1,12 @@
 ---
 - name: Install required packages
   apt:
-    name: ['postgresql-{{boris_postgresql_version}}', 'postgresql-contrib-{{boris_postgresql_version}}']
+    name: ['postgresql-{{database_postgresql_version}}', 'postgresql-contrib-{{database_postgresql_version}}']
     state: present
 
 - name: Enable password auth over local socket
   lineinfile:
-    dest="/etc/postgresql/{{boris_postgresql_version}}/main/pg_hba.conf"
+    dest="/etc/postgresql/{{database_postgresql_version}}/main/pg_hba.conf"
     regexp='local +all +all +(password|md5|peer)'
     line='local   all             all                                     md5'
   notify:

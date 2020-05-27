@@ -1,41 +1,41 @@
 ---
 - name: Create directory for environment files
   file:
-    path: "{{ boris_app_environ_dir }}"
+    path: "{{ backforth_app_environ_dir }}"
     state: directory
     owner: root
     mode: 700
 - name: Configure environment
   template:
     src: environ
-    dest: "{{boris_app_environ_file}}"
+    dest: "{{backforth_app_environ_file}}"
     owner: root
     mode: 600
 
 # Postgresql Database
 - name: Configure database user for the app
   postgresql_user:
-    name: "{{ boris_app_db_user }}"
+    name: "{{ backforth_app_db_user }}"
     db: postgres
-    password: "{{ boris_app_db_password }}"
+    password: "{{ backforth_app_db_password }}"
     encrypted: yes
-    login_host: "{{ boris_app_db_host }}"
+    login_host: "{{ backforth_app_db_host }}"
     login_user: "{{ database_postgres_admin_user_name }}"
     login_password: "{{ database_postgres_admin_password }}"
     port: "{{ postgres_secure_port }}"
 - name: Configure database for the app
   postgresql_db:
-    name: "{{ boris_app_db_name }}"
-    owner: "{{ boris_app_db_user }}"
-    login_host: "{{ boris_app_db_host }}"
+    name: "{{ backforth_app_db_name }}"
+    owner: "{{ backforth_app_db_user }}"
+    login_host: "{{ backforth_app_db_host }}"
     login_user: "{{ database_postgres_admin_user_name }}"
     login_password: "{{ database_postgres_admin_password }}"
     port: "{{ postgres_secure_port }}"
 - name: Enable pgcrypto extension
   postgresql_ext:
     name: pgcrypto
-    db: "{{ boris_app_db_name }}"
-    login_host: "{{ boris_app_db_host }}"
+    db: "{{ backforth_app_db_name }}"
+    login_host: "{{ backforth_app_db_host }}"
     login_user: "{{ database_postgres_admin_user_name }}"
     login_password: "{{ database_postgres_admin_password }}"
     port: "{{ postgres_secure_port }}"
@@ -43,12 +43,12 @@
 - name: Install docker-compose file
   template:
     src: docker-compose.yml.j2
-    dest: "{{boris_app_environ_dir}}/docker-compose.yml"
+    dest: "{{backforth_app_environ_dir}}/docker-compose.yml"
     owner: root
 
 - name: Enable the BORIS Docker service
   docker_compose:
-    project_src: "{{boris_app_environ_dir}}"
+    project_src: "{{backforth_app_environ_dir}}"
     project_name: back-and-forth
     state: present
 
@@ -58,7 +58,7 @@
 # Restart container (rquired after new tables created in migrations)
 - name: Restart back-and-forth so massive-js will pick up new DB tables
   docker_compose:
-    project_src: "{{boris_app_environ_dir}}"
+    project_src: "{{backforth_app_environ_dir}}"
     project_name: back-and-forth
     state: present
     restarted: yes
