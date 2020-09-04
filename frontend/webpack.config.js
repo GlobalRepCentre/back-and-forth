@@ -1,5 +1,6 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -11,6 +12,12 @@ module.exports = {
         filename: "[name].js",
         path: __dirname + "/dist",
         publicPath: '/s/',
+    },
+
+    // Minify output
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()],
     },
 
     // Enable sourcemaps for debugging webpack's output.
