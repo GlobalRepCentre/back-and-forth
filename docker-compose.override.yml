@@ -4,7 +4,7 @@ services:
   backend:
     volumes:
       - ./backend:/app/backend
-      - ./frontend/dist:/app/frontend/dist
+      - ./frontend:/app/frontend:ro
       - ./common:/app/common
       - ./package.json:/app/package.json
       - ./tsconfig.json:/app/tsconfig.json
