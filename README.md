@@ -7,7 +7,6 @@ team-based experiences wherever you want them.
 Installation
 ------------
 
-1. Install Node.js version 8.7 or newer
 1. Install [Docker](https://www.docker.com/) and (if on Windows) [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
 1. Clone this repository
 
@@ -92,3 +91,14 @@ these instructions:
 1. In `deploy/private/prod/vars.yml`, change `backforth_image_repo` to specify
    your custom registry/repository.
 1. Run the `ansible-playbook` command again to re-deploy.
+
+Updating package-lock.json
+--------------------------
+
+Due to a legacy setup that shares package.json between the backend and frontend,
+the containers are unable to update `package-lock.json`. To update dependencies,
+open a backend shell, run `npm install`, then copy the container's
+`package-lock.json` and overwrite the (older) `package-lock.json` on the host.
+
+(Details: mounting `package-lock.json` as a single bind mount prevents npm
+from deleting it during `npm install`.)
