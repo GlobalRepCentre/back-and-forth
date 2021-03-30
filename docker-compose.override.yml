@@ -6,11 +6,9 @@ services:
       - ./backend:/app/backend
       - ./frontend:/app/frontend:ro
       - ./common:/app/common
-      - ./package.json:/app/package.json
       - ./tsconfig.json:/app/tsconfig.json
   frontend:
     volumes:
       - ./frontend:/app/frontend
       - ./common:/app/common
-      - ./package.json:/app/package.json
       - ./tsconfig.json:/app/tsconfig.json

@@ -8,9 +8,10 @@ ENV NODE_ENV development
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY ./package.json /app/package.json
+COPY ./package-lock.json /app/package-lock.json
 COPY ./tsconfig.json /app/tsconfig.json
 
-RUN npm install
+RUN npm ci
 
 # The backend runs on port 3333 and the node debugger on 3334
 EXPOSE 3333 3334
