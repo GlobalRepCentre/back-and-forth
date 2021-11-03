@@ -34,7 +34,7 @@
     "pug": "~3.0.2",
     "react": "~16.13.1",
     "redis": "~3.0.2",
-    "validator": "~13.1.1",
+    "validator": "~13.7.0",
     "whiskers": "~0.4.0"
   },
   "devDependencies": {
