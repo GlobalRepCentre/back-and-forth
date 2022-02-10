@@ -75,7 +75,7 @@
     "jsonrpc-websocket-client": "^0.5.0",
     "mini-css-extract-plugin": "^0.6.0",
     "node-fetch": "^2.6.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react-admin": "~3.9.6",
     "react-dom": "~16.10.2",
     "react-modal": "^3.4.5",
